@@ -1,0 +1,11 @@
+docs_dir: docs/source
+site_dir: docs/site
+site_name: mr.publisher
+repo_url: https://github.com/svx/mr.publisher
+site_description: building and deploying documentation
+pages:
+- ['index.md', 'Introduction']
+- ['user-guide/building.md', 'User Guide', 'Building Documentation']
+- ['user-guide/deployment.md', 'User Guide', 'Deployment']
+- ['about/license.md', 'About', 'License']
+
