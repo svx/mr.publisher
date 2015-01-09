@@ -29,5 +29,5 @@ If you are having issues, please let us know.
 
 ## License
 
-The project is licensed under the GPLv2.
+The project is licensed under the [GPLv2](https://github.com/svx/mr.publisher/blob/master/LICENSE "Link to GPLv2").
 
