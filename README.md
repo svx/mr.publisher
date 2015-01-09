@@ -13,3 +13,21 @@ a tool to build and publish documentation to docs.plone.org
 - uploading to docs.plone.org
 - awesome docs about mr.publisher
 
+## Dependencies
+
+- [Virtualenv](https://virtualenv.pypa.io/en/latest/ "Virtualenv's Homepage")
+- [VirtualBox](https://www.virtualbox.org/ "VirtualBox's Homepage") [tested with version 4.3.20]
+
+## Contribute
+
+- Issue Tracker:[github.com/leftxs/mr.publisher/issues](https://github.com/leftxs/mr.publisher/issues "Issue Tracker")
+- Source Code:[github.com/leftxs/mr.publisher/](https://github.com/leftxs/mr.publisher "Code on GitHub")
+
+## Support
+
+If you are having issues, please let us know.
+
+## License
+
+The project is licensed under the GPLv2.
+
