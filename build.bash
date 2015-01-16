@@ -70,6 +70,7 @@ clear
 echo "${green}We are starting the build process - please be patient ${reset}"
 echo "${green}Start with fresh checkouts${reset}"
 
+# Building HTML docs for Plone 4
 function build4()
 {
     echo "${green}Check for Plone4${reset}"
@@ -87,6 +88,7 @@ function build4()
     make html
 }
 
+# Building HTML docs for Plone 3
 function build3()
 {
     echo "${green}Check for Plone3${reset}"
@@ -102,6 +104,16 @@ function build3()
     bin/buildout
     ./get_external_doc.sh
     make html
+}
+
+# Building docset for Plone 4
+function docset4()
+{
+}
+
+# Building docset for Plone 3
+function docset3()
+{
 }
 
 # Check the number of arguments. If none are passed, print help and exit.
