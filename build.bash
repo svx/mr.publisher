@@ -73,15 +73,15 @@ echo "${green}Start with fresh checkouts${reset}"
 # Building HTML docs for Plone 4
 function build4()
 {
-    echo "${green}Check for Plone4${reset}"
-    if [ -d "DocsPlone4" ]; then
+    echo "${green}Check for Plone 4${reset}"
+    if [ -d "Plone4" ]; then
         echo "${green}Deleting old docs for 4${reset}"
         rm -rf DocsPlone4
     fi
     echo "${green}Checkout Docs for Plone 4${reset}"
-    git clone git@github.com:plone/papyrus --branch master --single-branch DocsPlone4
+    git clone git@github.com:plone/papyrus --branch master --single-branch Plone4
     echo "${green}Switching into DocsPlone4 and starting the build ${reset}"
-    cd DocsPlone4
+    cd Plone4
     python bootstrap-buildout.py
     bin/buildout
     ./get_external_doc.sh
@@ -91,15 +91,15 @@ function build4()
 # Building HTML docs for Plone 3
 function build3()
 {
-    echo "${green}Check for Plone3${reset}"
-    if [ -d "DocsPlone3" ]; then
+    echo "${green}Check for Plone 3${reset}"
+    if [ -d "Plone3" ]; then
         echo "${green}Deleting old docs for 3${reset}"
         rm -rf DocsPlone3
     fi
     echo "${green}Checkout Docs for Plone 3${reset}"
-    git clone git@github.com:plone/papyrus --branch 3.3 --single-branch DocsPlone3
+    git clone git@github.com:plone/papyrus --branch 3.3 --single-branch Plone3
     echo "${green}Switching into DocsPlone3 and starting the build ${reset}"
-    cd DocsPlone3
+    cd Plone3
     python bootstrap-buildout.py
     bin/buildout
     ./get_external_doc.sh
@@ -109,11 +109,19 @@ function build3()
 # Building docset for Plone 4
 function docset4()
 {
+    doc2dash -n Plone4 --icon dash/icon.png build/html/en
+    cd Plone4.docset/Contents
+    rm Info.plist
+    wget https://raw.githubusercontent.com/plone/papyrus/master/dash/Info.plist
+    cd Pone4.docset/Contents/Resources/Documents
+    wget https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png
+    tar --exclude='.DS_Store' -cvzf Plone4.tgz Plone4.docset
 }
 
 # Building docset for Plone 3
 function docset3()
 {
+
 }
 
 # Check the number of arguments. If none are passed, print help and exit.
