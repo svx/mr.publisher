@@ -110,18 +110,20 @@ function build3()
 function docset4()
 {
     doc2dash -n Plone4 --icon dash/icon.png build/html/en
-    cd Plone4.docset/Contents
-    rm Info.plist
-    wget https://raw.githubusercontent.com/plone/papyrus/master/dash/Info.plist
-    cd Pone4.docset/Contents/Resources/Documents
-    wget https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png
+    rm Plone4.docset/Contents/Info.plist
+    cd Plone4.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone4-Info.plist ; cd -; }
+    cd Plone4.docset/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
     tar --exclude='.DS_Store' -cvzf Plone4.tgz Plone4.docset
 }
 
 # Building docset for Plone 3
 function docset3()
 {
-
+    doc2dash -n Plone3 --icon dash/icon.png build/html/en
+    rm Plone3.docset/Contents/Info.plist
+    cd Plone3.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone3-Info.plist ; cd -; }
+    cd Plone3.docset/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
+    tar --exclude='.DS_Store' -cvzf Plone3.tgz Plone3.docset
 }
 
 # Check the number of arguments. If none are passed, print help and exit.
