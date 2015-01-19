@@ -145,11 +145,11 @@ while [ "$#" -gt 0 ]; do
             docset4
             ;;
         -vagrant)
-			echo "Vagrant"
-			;;
-		-docker
-			echo "Docker"
-			;;
+	    echo "Vagrant"
+	    ;;
+	-docker)
+	    echo "Docker"
+	    ;;
         --)              # End of all options.
             shift
             break
@@ -161,7 +161,6 @@ while [ "$#" -gt 0 ]; do
 done
 
 
-remove_old
 build4
 docset4
 #build3
