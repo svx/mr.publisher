@@ -1,6 +1,6 @@
 # mr.publisher
 
-a tool to build and publish documentation to docs.plone.org
+a tool to build and publish documentation
 
 
 ## Features
