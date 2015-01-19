@@ -144,6 +144,10 @@ while [ "$#" -gt 0 ]; do
             build4
             docset4
             ;;
+        -3|-plone3)
+            build3
+            docset3
+            ;;
         -vagrant)
 	    echo "Vagrant"
 	    ;;
