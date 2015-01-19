@@ -109,21 +109,21 @@ function build3()
 # Building docset for Plone 4
 function docset4()
 {
-    doc2dash -n Plone4 --icon dash/icon.png build/html/en
-    rm Plone4.docset/Contents/Info.plist
-    cd Plone4.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone4-Info.plist ; cd -; }
-    cd Plone4.docset/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
-    tar --exclude='.DS_Store' -cvzf Plone4.tgz Plone4.docset
+    cd Plone4 && { doc2dash -n Plone4 --icon dash/icon.png build/html/en ; cd -;}
+    rm Plone4/Plone4.docset/Contents/Info.plist
+    cd Plone4/Plone4.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone4-Info.plist ; cd -; }
+    cd Plone4.docset/Contents/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
+    cd Plone4 && { tar --exclude='.DS_Store' -cvzf Plone4.tgz Plone4.docset ; cd -;}
 }
 
 # Building docset for Plone 3
 function docset3()
 {
-    doc2dash -n Plone3 --icon dash/icon.png build/html/en
-    rm Plone3.docset/Contents/Info.plist
-    cd Plone3.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone3-Info.plist ; cd -; }
-    cd Plone3.docset/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
-    tar --exclude='.DS_Store' -cvzf Plone3.tgz Plone3.docset
+    cd Plone3 && { doc2dash -n Plone3 --icon dash/icon.png build/html/en ; cd -;}
+    rm Plone3/Plone3.docset/Contents/Info.plist
+    cd Plone3/Plone3.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone3-Info.plist ; cd -; }
+    cd Plone3.docset/Contents/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
+    cd Plone3 && { tar --exclude='.DS_Store' -cvzf Plone3.tgz Plone3.docset ; cd -;}
 }
 
 # Check the number of arguments. If none are passed, print help and exit.
