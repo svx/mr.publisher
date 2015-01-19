@@ -162,7 +162,8 @@ done
 
 remove_old
 build4
-build3
+docset4
+#build3
 
 # Tell us how long it took
 trap times EXIT
