@@ -18,7 +18,8 @@ verbose=0
 
 ## FUNCTIONS
 # help function
-function HELP {
+function HELP ()
+{
   echo -e \\n"Help documentation for mr.publisher${reset}"\\n
   echo -e "${rev}Basic usage:${reset} ${bold}build.bash -plone4${reset}"\\n
   echo "Command line switches are optional. The following switches are recognized."
@@ -33,7 +34,7 @@ function HELP {
 }
 
 # error function
-function error_exit
+function error_exit ()
 {
 
 #   ----------------------------------------------------------------
@@ -134,39 +135,29 @@ function docset3()
 #fi
 
 ## Arguments
-while [ "$#" -gt 0 ]; do
-    case $1 in
-        -h|-\?|--help)
-            HELP
-            exit
-            ;;
-        -4|-plone4)
-            build4
-            docset4
-            ;;
-        -3|-plone3)
-            build3
-            docset3
-            ;;
-        -vagrant)
-	    echo "Vagrant"
-	    ;;
-	-docker)
-	    echo "Docker"
-	    ;;
-        --)              # End of all options.
-            shift
-            break
-            ;;
-        *)
-            break
-        esac
+while [ "$#" -gt 0 ]
+do
+    case "$1" in
+    -h|--help)
+        HELP
+        exit 0
+        ;;
+    -p3|--plone3)
+        echo "plone 3"
+        ;;
+    -p4|--plone4)
+        docset4
+        ;;
+    --)
+        break
+        ;;
+    *) ;;
+    esac
     shift
 done
 
-
-build4
-docset4
+#build4
+#docset4
 #build3
 
 # Tell us how long it took
