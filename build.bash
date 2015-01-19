@@ -62,8 +62,8 @@ fi
 }
 
 # Check if we can detect a virtualenv
-echo "${green}Checking dependencies${reset}"
-check_venv
+#echo "${green}Checking dependencies${reset}"
+#check_venv
 
 # Clean the screen
 clear

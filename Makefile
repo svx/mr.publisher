@@ -17,3 +17,7 @@ bootstrap:
 
 	@echo -e "${green}>>> Install dependencies...${reset}"
 	bash -c "source bin/activate && pip install -r requirements.txt"
+
+plone4:
+	@echo "${green}>>> Building docs and docsets for Plone 4${reset}"
+	bash -c "source bin/activate && /build.bash --plone4"
