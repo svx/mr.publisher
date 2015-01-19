@@ -140,8 +140,9 @@ while [ "$#" -gt 0 ]; do
             HELP
             exit
             ;;
-        -3|-plone3)
-            echo "plone3"
+        -4|-plone4)
+            build4
+            docset4
             ;;
         -vagrant)
 			echo "Vagrant"
