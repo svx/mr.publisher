@@ -1,6 +1,6 @@
 #!/bin/bash
-PROGNAME=`basename ${BASH_SOURCE[0]}
-#PROGNAME=$(basename $0)
+#PROGNAME=`basename ${BASH_SOURCE[0]}
+PROGNAME=$(basename $0)
 #SCRIPT=`basename ${BASH_SOURCE[0]}
 # Colors
 red=`tput setaf 1`
