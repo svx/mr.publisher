@@ -68,9 +68,6 @@ fi
 # Clean the screen
 clear
 
-echo "${green}We are starting the build process - please be patient ${reset}"
-echo "${green}Start with fresh checkouts${reset}"
-
 # Building HTML docs for Plone 4
 function build4()
 {
