@@ -17,6 +17,9 @@ a tool to build and publish documentation
 
 - [Virtualenv](https://virtualenv.pypa.io/en/latest/ "Virtualenv's Homepage")
 - [VirtualBox](https://www.virtualbox.org/ "VirtualBox's Homepage") [tested with version 4.3.20]
+- [Ansible](http://www.ansible.com/home "Ansible's Homepage")
+- [Pip-tools](https://github.com/nvie/pip-tools/ Pip-tools on Github")
+- [MkDocs](http://www.mkdocs.org/ "MkDocs's Homepage")
 
 ## Contribute
 
