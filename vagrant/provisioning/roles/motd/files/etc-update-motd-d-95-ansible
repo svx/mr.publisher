@@ -3,7 +3,7 @@
 echo
 echo " ********************************************************"
 echo " * "
-echo " * This server is configured using Ansible."
+echo " * This is the vagrant box of docs.plone.org."
 echo " * "
 echo " ********************************************************"
 echo
