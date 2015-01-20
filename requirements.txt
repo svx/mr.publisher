@@ -2,3 +2,4 @@ mkdocs
 doc2dash
 ansible
 pip-tools
+fig
