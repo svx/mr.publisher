@@ -1,0 +1,6 @@
+---
+# This role will change some filesystem setting, do not use it in production !
+
+- name: Enable writeback for better performance
+  command: tune2fs /dev/sda1 -O has_journal -o journal_data_writeback
+

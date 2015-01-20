@@ -1,0 +1,56 @@
+server {
+    listen      80;
+    server_name docs.plone.org;
+    #return 301 https://www.domain.com;
+    access_log  /var/log/nginx/docs.plone.org-access.log;
+
+    error_page 404 /404.html;
+    # link the code to the file
+    location = /404.html {
+    #EDIT this line to make it match the folder where there is your errors page
+    #Dont forget to create 404.html in this folder
+    root  /var/www/error/;
+   }
+
+   location /reference_manuals/external/plone.api {
+    return 301 http://docs.plone.org/external/plone.api/docs/index.html$1;
+   }
+
+   location /reference_manuals/external/plone.app.robotframework {
+    return 301 http://docs.plone.org/external/plone.app.robotframework/docs/source/index.html$1;
+   }
+
+   location /reference_manuals/external/plone.app.theming {
+    return 301 http://docs.plone.org/external/plone.app.theming/docs/index.html$1; 
+   } 
+
+   location /views/more_view_examples.html {
+    return 301 http://docs.plone.org/develop/plone/views/more_view_examples.html$1;
+   }
+
+    location / {
+              root    /var/www/docs.plone.org/43/en;
+              index   index.html index.htm;
+        }
+
+}
+
+
+#server { 
+#   listen 443;
+#   ssl on;
+#        ssl_certificate /etc/nginx/ssl/plone.org.crt;
+#        ssl_certificate_key /etc/nginx/ssl/plone.org.key;
+#        ssl_session_timeout 5m;
+#        ssl_protocols SSLv2 SSLv3 TLSv1;
+#        ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+
+#   server_name docs.plone.org;
+#   access_log  /var/log/nginx/docs.plone.org-ssl-access.log;
+
+#   location / {
+#       root    /var/www/docs.plone.org/43/en;
+#       index   index.html index.htm;
+#   }
+#}
+

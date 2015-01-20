@@ -1,0 +1,15 @@
+---
+# This role installs all needed packages
+
+
+- name: Update | apt-update
+  apt: update_cache=yes
+
+- name: Install all packages we need
+  apt: name={{item}} state=present
+  with_items:
+    - htop
+    - build-essential
+    - git
+    - vim
+    - enchant # for spellcheck in sphinx
