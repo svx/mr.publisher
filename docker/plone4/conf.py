@@ -50,7 +50,8 @@ extensions = [
 #todo_include_todos = True
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['../source/documentation/_templates']
+#templates_path = ['../source/documentation/_templates']
+templates_path = ['../../Plone4/source/documentation/_templates']
 
 locale_dirs = ["../source/documentation/_locales"]
 
@@ -175,7 +176,7 @@ html_theme_options = {
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = '%(project)s v%(release)s' % {
+html_title = '%(project)s v%(release)s Docker build' % {
     'project': project,
     'release': release}
 
