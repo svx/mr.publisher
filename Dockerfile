@@ -9,14 +9,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends software-proper
     add-apt-repository ppa:nginx/stable && \
     apt-get update && \
     apt-get install -y --no-install-recommends nginx && \
+    mkdir -p /var/www/43 && \
+    mkdir -p /var/www/33 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV DEBIAN_FRONTEND newt
 
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+COPY docker/mime.types /etc/nginx/mime.types
+COPY docker/default /etc/nginx/sites-available/default
+COPY docker/index.html /var/www/43/index.html
+
 # Define default command.
 CMD ["nginx"]
-# # Expose ports.
+
+# Expose ports.
 EXPOSE 80
 
 
