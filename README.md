@@ -20,6 +20,7 @@ a tool to build and publish documentation
 - [Ansible](http://www.ansible.com/home "Ansible's Homepage")
 - [Pip-tools](https://github.com/nvie/pip-tools/ Pip-tools on Github")
 - [MkDocs](http://www.mkdocs.org/ "MkDocs's Homepage")
+- [Docker](https://www.docker.com/ "Docker's Homepage")
 
 ## Contribute
 
