@@ -16,10 +16,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends software-proper
 
 ENV DEBIAN_FRONTEND newt
 
-COPY docker/nginx.conf /etc/nginx/nginx.conf
-COPY docker/mime.types /etc/nginx/mime.types
-COPY docker/default /etc/nginx/sites-available/default
-COPY docker/index.html /var/www/43/index.html
+COPY nginx/docker/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/docker/mime.types /etc/nginx/mime.types
+COPY nginx/docker/default /etc/nginx/sites-available/default
+COPY nginx/docker/index.html /var/www/43/index.html
 
 # Define default command.
 CMD ["nginx"]
