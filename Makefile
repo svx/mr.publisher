@@ -6,7 +6,7 @@ VENV=.
 red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
-# #echo "${red}red text ${green}green text${reset}"
+#echo "${red}red text ${green}green text${reset}"
 
 .PHONY: bootstrap plone3 plone4 pip-update pip-list
 
