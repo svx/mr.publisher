@@ -84,6 +84,7 @@ function build4()
     bin/buildout
     ./get_external_doc.sh
     make html
+    exit
 }
 
 # Building HTML docs for Plone 3
