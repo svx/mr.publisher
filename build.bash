@@ -125,6 +125,13 @@ function docset3()
     cd Plone3 && { tar --exclude='.DS_Store' -cvzf Plone3.tgz Plone3.docset ; cd -;}
 }
 
+# Building Plone 4 docs for docker
+function docs4_docker()
+{
+    cd Plone4
+    ./bin/sphinx-build -c ../docker/plone4/ -j4 -b html source/documentation build/html/docker
+}
+
 # Check the number of arguments. If none are passed, print help and exit.
 #NUMARGS=$#
 #echo -e \\n"Number of arguments: $NUMARGS"
@@ -144,7 +151,7 @@ do
         echo "plone 3"
         ;;
     -p4|--plone4)
-        docset4
+        docs4_docker
         ;;
     --)
         break

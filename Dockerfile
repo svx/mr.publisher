@@ -20,7 +20,7 @@ COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY docker/nginx/mime.types /etc/nginx/mime.types
 COPY docker/nginx/default /etc/nginx/sites-available/default
 #COPY nginx/docker/index.html /var/www/43/index.html
-COPY Plone4/build/html/en/ /var/www/43/en
+COPY Plone4/build/html/docker/ /var/www/43/en
 # Define default command.
 CMD ["nginx"]
 
