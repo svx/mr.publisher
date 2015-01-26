@@ -79,12 +79,12 @@ function build4()
     echo "${green}Checkout Docs for Plone 4${reset}"
     git clone git@github.com:plone/papyrus --branch master --single-branch Plone4
     echo "${green}Switching into DocsPlone4 and starting the build ${reset}"
-    cd Plone4
-    python bootstrap-buildout.py
-    bin/buildout
-    ./get_external_doc.sh
-    make html
-    exit
+    cd Plone4 && { python bootstrap-buildout.py ; bin/buildout ; ./get_external_doc.sh ; make html ; cd -;  }
+    #python bootstrap-buildout.py
+    #bin/buildout
+    #./get_external_doc.sh
+    #make html
+    #exit
 }
 
 # Building HTML docs for Plone 3
@@ -151,7 +151,7 @@ do
         echo "plone 3"
         ;;
     -p4|--plone4)
-        docs4_docker
+        build4
         ;;
     --)
         break
