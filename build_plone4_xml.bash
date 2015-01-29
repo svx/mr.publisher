@@ -6,7 +6,7 @@ VERSION=$(cat version)
 #echo "Buildversion is "$VERSION""
 
 #define the template.
-cat > version.xml << EOF
+cat > Plone4/version.xml << EOF
 <entry>
  <version>"$VERSION"</version>
  <url>http://docs.plone.org/Plone4.tgz</url>

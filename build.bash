@@ -113,6 +113,7 @@ function docset4()
     cd Plone4/Plone4.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone4-Info.plist ; cd -; }
     cd Plone4.docset/Contents/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
     cd Plone4 && { tar --exclude='.DS_Store' -cvzf Plone4.tgz Plone4.docset ; cd -;}
+    ./build_plone4_xml.bash
 }
 
 # Building docset for Plone 3
