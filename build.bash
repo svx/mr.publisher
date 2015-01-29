@@ -125,6 +125,11 @@ function docs4_docker()
     ./bin/sphinx-build -c ../docker/plone4/ -j4 -b html source/documentation build/html/docker
 }
 
+function build_docker_ct ()
+{
+    ./build_docker.bash
+}
+
 # Check the number of arguments. If none are passed, print help and exit.
 #NUMARGS=$#
 #echo -e \\n"Number of arguments: $NUMARGS"
@@ -147,6 +152,9 @@ do
     -p4|--plone4)
         build4
         docset4
+        ;;
+     -d|--docker)
+        build_docker_ct
         ;;
     -a|--all)
         build3
