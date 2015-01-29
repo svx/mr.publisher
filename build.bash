@@ -73,18 +73,13 @@ function build4()
 {
     echo "${green}Check for Plone 4${reset}"
     if [ -d "Plone4" ]; then
-        echo "${green}Deleting old docs for 4${reset}"
-        rm -rf DocsPlone4
+        echo "${green}Deleting old Plone 4 docs${reset}"
+        rm -rf Plone4
     fi
     echo "${green}Checkout Docs for Plone 4${reset}"
     git clone git@github.com:plone/papyrus --branch master --single-branch Plone4
     echo "${green}Switching into DocsPlone4 and starting the build ${reset}"
     cd Plone4 && { python bootstrap-buildout.py ; bin/buildout ; ./get_external_doc.sh ; make html ; cd -;  }
-    #python bootstrap-buildout.py
-    #bin/buildout
-    #./get_external_doc.sh
-    #make html
-    #exit
 }
 
 # Building HTML docs for Plone 3
@@ -92,17 +87,13 @@ function build3()
 {
     echo "${green}Check for Plone 3${reset}"
     if [ -d "Plone3" ]; then
-        echo "${green}Deleting old docs for 3${reset}"
-        rm -rf DocsPlone3
+        echo "${green}Deleting old Plone 3 docs${reset}"
+        rm -rf Plone3
     fi
     echo "${green}Checkout Docs for Plone 3${reset}"
     git clone git@github.com:plone/papyrus --branch 3.3 --single-branch Plone3
     echo "${green}Switching into DocsPlone3 and starting the build ${reset}"
-    cd Plone3
-    python bootstrap-buildout.py
-    bin/buildout
-    ./get_external_doc.sh
-    make html
+    cd Plone3 && { python bootstrap-buildout.py ; bin/buildout ; ./get_external_doc.sh ; make html ; cd -;  }
 }
 
 # Building docset for Plone 4
@@ -124,6 +115,7 @@ function docset3()
     cd Plone3/Plone3.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone3-Info.plist ; cd -; }
     cd Plone3.docset/Contents/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
     cd Plone3 && { tar --exclude='.DS_Store' -cvzf Plone3.tgz Plone3.docset ; cd -;}
+    ./build_plone3_xml.bash
 }
 
 # Building Plone 4 docs for docker
@@ -149,10 +141,18 @@ do
         exit 0
         ;;
     -p3|--plone3)
-        echo "plone 3"
+        build3
+        docset3
         ;;
     -p4|--plone4)
         build4
+        docset4
+        ;;
+    -a|--all)
+        build3
+        docset3
+        build4
+        docset4
         ;;
     --)
         break
@@ -162,15 +162,6 @@ do
     shift
 done
 
-#build4
-#docset4
-#build3
 
 # Tell us how long it took
 trap times EXIT
-
-# Todo:
-# - add error function
-# - add log
-# - better messages
-
