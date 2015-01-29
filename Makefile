@@ -26,6 +26,10 @@ plone4:
 	@echo "${green}>>> Building docs and docsets for Plone 4${reset}"
 	bash -c "source bin/activate && ./build.bash --plone4"
 
+build-all:
+	@echo "${green}>>> Building docs and docsets for Plone 3 and Plone 4${reset}"
+	bash -c "source bin/activate && ./build.bash --all"
+
 pip-update:
 	@echo -e"${green}>>> Upgrading all packes installed with pip${reset}"
 	bash -c "source bin/activate && pip-review --auto"
