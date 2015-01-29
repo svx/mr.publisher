@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # test if i can get the version
-VERSION=$(cat version)
+VERSION=$(cat version.txt)
 
 #echo "Buildversion is "$VERSION""
 

@@ -1,7 +1,6 @@
 #!/bin/bash
-#PROGNAME=`basename ${BASH_SOURCE[0]}
+
 PROGNAME=$(basename $0)
-#SCRIPT=`basename ${BASH_SOURCE[0]}
 # Colors
 red=`tput setaf 1`
 green=`tput setaf 2`
@@ -67,6 +66,17 @@ fi
 
 # Clean the screen
 clear
+
+function builddate()
+{
+    # Date format is Year-Month-Day
+    DATE=`date +%Y%m%d`
+    echo "${green}Check for version file${reset}"
+    if [ -d "version.txt" ]; then
+        rm version.txt
+    fi
+    echo ""$DATE"" > version.txt
+}
 
 # Building HTML docs for Plone 4
 function build4()
@@ -146,10 +156,12 @@ do
         exit 0
         ;;
     -p3|--plone3)
+        builddate
         build3
         docset3
         ;;
     -p4|--plone4)
+        builddate
         build4
         docset4
         ;;
@@ -157,6 +169,7 @@ do
         build_docker_ct
         ;;
     -a|--all)
+        builddate
         build3
         docset3
         build4
