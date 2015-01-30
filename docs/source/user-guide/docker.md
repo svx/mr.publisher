@@ -12,5 +12,7 @@ Which is just a wrapper around this command:
 
 This will build a docker container with documentation for Plone 3 and Plone 4
 
-## Setup
+Please note, for docker builds we are using a slightly modified Sphinx configuration file, where GA and Opensearch settings are removed.
+
+
 
