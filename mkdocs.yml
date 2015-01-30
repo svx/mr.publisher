@@ -10,5 +10,4 @@ pages:
 - ['user-guide/vagrant.md', 'User Guide', 'Vagrant']
 - ['user-guide/deployment.md', 'User Guide', 'Deployment']
 - ['user-guide/docker.md', 'User Guide', 'Docker']
-- ['about/license.md', 'About', 'License']
-
+- ['about/this_docs.md', 'About', 'This docs']
