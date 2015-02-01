@@ -7,8 +7,8 @@ This script has different build options:
     - build only Plone 4 docs
     - build docs for Plone 3 and Plone 4
 
-![Screenshot](img/mr.publisher_help.png)
 
+![Screenshot](img/mr.publisher_help.png)
 
 ## Usage
 
