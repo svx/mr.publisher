@@ -8,6 +8,6 @@ pages:
 - ['install.md', 'Install']
 - ['user-guide/building.md', 'User Guide', 'Building Documentation']
 - ['user-guide/vagrant.md', 'User Guide', 'Vagrant']
-- ['user-guide/deployment.md', 'User Guide', 'Deployment']
 - ['user-guide/docker.md', 'User Guide', 'Docker']
+- ['user-guide/deployment.md', 'User Guide', 'Deployment']
 - ['about/this_docs.md', 'About', 'This docs']
