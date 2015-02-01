@@ -7,10 +7,12 @@ This script has different build options:
     - build only Plone 4 docs
     - build docs for Plone 3 and Plone 4
 
-![Screenshot](img/mr.publisher-help.png)
+![Screenshot](img/mr.publisher_help.png)
 
 
-## Examples
+## Usage
+
+To make it a bit more easier to use, you can just call them via *make*
 
 Building docs for Plone 3:
 
@@ -24,8 +26,8 @@ Building docs for Plone 3 and Plone 4
 
     make build-all
 
+
 ## Result
 
-THe build script will always build the html version, the docset and the docset xml file.
-
-TODO: sceenshot of help options
+The build script will always build the html version, the docset and the docset xml file.
+If you want to build the docker container too, please check the [docker part](docker.md) of this  documentation.
