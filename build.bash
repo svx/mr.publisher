@@ -56,7 +56,7 @@ function check_venv ()
 {
 if [[ -z $VIRTUAL_ENV ]]; then
     error_exit "$LINENO":"${red}Please make sure that virtualenv is installed and activated${reset}"
-else .
+else :
 fi
 }
 
