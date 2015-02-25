@@ -1,0 +1,5 @@
+# Just drop here till we have docs
+./bin/sphinx-build -c ../docker/plone5/ -j4 -b html source/documentation build/html/docker
+
+# docker commands
+

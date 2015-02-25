@@ -24,6 +24,7 @@ function HELP ()
   echo "Command line switches are optional. The following switches are recognized."
   echo "${rev}-plone3${reset}  --Build Plone 3 Docs and docsets${reset}."
   echo "${rev}-plone4${reset}  --Build Plone 4 Docs and docsets${reset}."
+  echo "${rev}-plone5${reset}  --Build Plone 5 Docs and docsets${reset}."
   echo "${rev}-all${reset}     --Build Docs and docsets for all versions${reset}."
   echo "${rev}-vagrant${reset} --Starts docs.plone.org as vagrant box for finial test${reset}."
   echo "${rev}-docker${reset}  --Build docker container${reset}."
@@ -78,6 +79,20 @@ function builddate()
     echo ""$DATE"" > version.txt
 }
 
+# Building HTML docs for Plone 5
+function build5()
+{
+    echo "${green}Check for Plone 5${reset}"
+    if [ -d "Plone4" ]; then
+        echo "${green}Deleting old Plone 5 docs${reset}"
+        rm -rf Plone4
+    fi
+    echo "${green}Checkout Docs for Plone 5${reset}"
+    git clone git@github.com:plone/papyrus --branch 5.0 --single-branch Plone5
+    echo "${green}Switching into DocsPlone4 and starting the build ${reset}"
+    cd Plone5 && { python bootstrap-buildout.py ; bin/buildout ; ./get_external_doc.sh ; make html ; cd -;  }
+}
+
 # Building HTML docs for Plone 4
 function build4()
 {
@@ -104,6 +119,17 @@ function build3()
     git clone git@github.com:plone/papyrus --branch 3.3 --single-branch Plone3
     echo "${green}Switching into DocsPlone3 and starting the build ${reset}"
     cd Plone3 && { python bootstrap-buildout.py ; bin/buildout ; ./get_external_doc.sh ; make html ; cd -;  }
+}
+
+# Building docset for Plone 5
+function docset5()
+{
+    cd Plone5 && { doc2dash -n Plone5 --icon dash/icon.png build/html/en ; cd -;}
+    rm Plone5/Plone5.docset/Contents/Info.plist
+    cd Plone5/Plone5.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone4-Info.plist ; cd -; }
+    cd Plone5.docset/Contents/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
+    cd Plone5 && { tar --exclude='.DS_Store' -cvzf Plone5.tgz Plone5.docset ; cd -;}
+    ./build_plone5_xml.bash
 }
 
 # Building docset for Plone 4
@@ -133,6 +159,13 @@ function docs4_docker()
 {
     cd Plone4
     ./bin/sphinx-build -c ../docker/plone4/ -j4 -b html source/documentation build/html/docker
+}
+
+# Building Plone 5 docs for docker
+function docs5_docker()
+{
+    cd Plone5
+    ./bin/sphinx-build -c ../docker/plone5/ -j4 -b html source/documentation build/html/docker
 }
 
 function build_docker_ct ()
@@ -165,6 +198,11 @@ do
         build4
         docset4
         ;;
+    -p5|--plone5)
+        builddate
+        build5
+        docset5
+        ;;
      -d|--docker)
         build_docker_ct
         ;;
@@ -174,6 +212,8 @@ do
         docset3
         build4
         docset4
+        build5
+        docset5
         ;;
     --)
         break

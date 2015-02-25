@@ -5,6 +5,7 @@ This script has different build options:
 
     - build only Plone 3 docs
     - build only Plone 4 docs
+    - build only Plone 5 docs
     - build docs for Plone 3 and Plone 4
 
 
@@ -12,17 +13,22 @@ This script has different build options:
 
 ## Usage
 
+
 To make it a bit more easier to use, you can just call them via *make*
 
 Building docs for Plone 3:
 
-    make plone 3
+    make plone3
 
 Building docs for Plone 4:
 
-    make Plone 4
+    make plone4
 
-Building docs for Plone 3 and Plone 4
+Building docs for Plone 5:
+
+    make plone5
+
+Building docs for Plone 3, Plone 4 and Plone 5
 
     make build-all
 
