@@ -25,7 +25,6 @@ function HELP ()
   echo "${rev}-plone3${reset}  --Build Plone 3 Docs and docsets${reset}."
   echo "${rev}-plone4${reset}  --Build Plone 4 Docs and docsets${reset}."
   echo "${rev}-plone5${reset}  --Build Plone 5 Docs and docsets${reset}."
-  echo "${rev}-all${reset}     --Build Docs and docsets for all versions${reset}."
   echo "${rev}-vagrant${reset} --Starts docs.plone.org as vagrant box for finial test${reset}."
   echo "${rev}-docker${reset}  --Build docker container${reset}."
   echo -e "${rev}-h${reset}       --Displays this help message. No further functions are performed."\\n
@@ -121,39 +120,6 @@ function build3()
     cd Plone3 && { python bootstrap-buildout.py ; bin/buildout ; ./get_external_doc.sh ; make html ; cd -;  }
 }
 
-# Building docset for Plone 5
-function docset5()
-{
-    cd Plone5 && { doc2dash -n Plone5 --icon dash/icon.png build/html/en ; cd -;}
-    rm Plone5/Plone5.docset/Contents/Info.plist
-    cd Plone5/Plone5.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone4-Info.plist ; cd -; }
-    cd Plone5.docset/Contents/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
-    cd Plone5 && { tar --exclude='.DS_Store' -cvzf Plone5.tgz Plone5.docset ; cd -;}
-    ./build_plone5_xml.bash
-}
-
-# Building docset for Plone 4
-function docset4()
-{
-    cd Plone4 && { doc2dash -n Plone4 --icon dash/icon.png build/html/en ; cd -;}
-    rm Plone4/Plone4.docset/Contents/Info.plist
-    cd Plone4/Plone4.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone4-Info.plist ; cd -; }
-    cd Plone4.docset/Contents/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
-    cd Plone4 && { tar --exclude='.DS_Store' -cvzf Plone4.tgz Plone4.docset ; cd -;}
-    ./build_plone4_xml.bash
-}
-
-# Building docset for Plone 3
-function docset3()
-{
-    cd Plone3 && { doc2dash -n Plone3 --icon dash/icon.png build/html/en ; cd -;}
-    rm Plone3/Plone3.docset/Contents/Info.plist
-    cd Plone3/Plone3.docset && { curl -o Info.plist https://raw.githubusercontent.com/plone/papyrus/master/dash/Plone3-Info.plist ; cd -; }
-    cd Plone3.docset/Contents/Resources/Documents && { curl -O https://raw.githubusercontent.com/plone/papyrus/master/dash/icon.png ; cd -; }
-    cd Plone3 && { tar --exclude='.DS_Store' -cvzf Plone3.tgz Plone3.docset ; cd -;}
-    ./build_plone3_xml.bash
-}
-
 # Building Plone 4 docs for docker
 function docs4_docker()
 {
@@ -191,17 +157,14 @@ do
     -p3|--plone3)
         builddate
         build3
-        docset3
         ;;
     -p4|--plone4)
         builddate
         build4
-        docset4
         ;;
     -p5|--plone5)
         builddate
         build5
-        docset5
         ;;
      -d|--docker)
         build_docker_ct
@@ -209,11 +172,8 @@ do
     -a|--all)
         builddate
         build3
-        docset3
         build4
-        docset4
         build5
-        docset5
         ;;
     --)
         break
